@@ -814,9 +814,6 @@ export function createApiServer() {
         }
     });
 
-    return app;
-}
-
 // ─── Vercel Serverless Entry Point ─────────────────────────────────────────────
 // Vercel @vercel/node calls the default export as a request handler.
 // Singleton pattern keeps the MongoDB connection alive across warm invocations.
