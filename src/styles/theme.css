@@ -1,0 +1,153 @@
+/* Global Theme Variables */
+:root {
+  --theme-primary: #8b5cf6;
+  --theme-secondary: #ec4899;
+  --theme-accent: #a78bfa;
+  --transition-duration: 0.5s;
+}
+
+/* Smooth transitions for theme-dependent elements */
+* {
+  transition: 
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    color var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease,
+    filter var(--transition-duration) ease;
+}
+
+/* Scrollbar Styling - Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  transition: background-color var(--transition-duration) ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-secondary);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-color: var(--theme-primary) rgba(0, 0, 0, 0.3);
+  scrollbar-width: thin;
+}
+
+/* Custom Cursor */
+html {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="4" fill="%238b5cf6"/><circle cx="16" cy="16" r="8" fill="none" stroke="%238b5cf6" stroke-width="1" opacity="0.5"/></svg>') 16 16, auto;
+}
+
+/* Theme-aware link colors */
+a {
+  color: var(--theme-primary);
+  transition: color var(--transition-duration) ease;
+}
+
+a:hover {
+  color: var(--theme-secondary);
+}
+
+/* Theme-aware button styles */
+button {
+  transition: 
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease;
+}
+
+/* Theme-aware input focus */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 0 3px rgba(var(--theme-primary-rgb), 0.1);
+}
+
+/* Smooth section transitions */
+section {
+  transition: background-color var(--transition-duration) ease;
+}
+
+/* Glow effect for theme elements */
+.theme-glow {
+  box-shadow: 0 0 20px rgba(var(--theme-primary-rgb), 0.3);
+  transition: box-shadow var(--transition-duration) ease;
+}
+
+.theme-glow:hover {
+  box-shadow: 0 0 30px rgba(var(--theme-secondary-rgb), 0.5);
+}
+
+/* Theme border */
+.theme-border {
+  border-color: var(--theme-primary);
+  transition: border-color var(--transition-duration) ease;
+}
+
+.theme-border:hover {
+  border-color: var(--theme-secondary);
+}
+
+/* Theme text */
+.theme-text {
+  color: var(--theme-primary);
+  transition: color var(--transition-duration) ease;
+}
+
+/* Theme background */
+.theme-bg {
+  background-color: var(--theme-primary);
+  transition: background-color var(--transition-duration) ease;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--theme-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--theme-primary);
+  color: white;
+}
+
+/* Placeholder text */
+::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--theme-primary);
+  outline-offset: 2px;
+}
+
+/* Smooth page transitions */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    transition: none !important;
+  }
+}

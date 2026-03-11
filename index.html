@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed Nabil - Backend Developer</title>
+  <meta name="description"
+    content="Professional portfolio of Ahmed Nabil, Backend Developer. Showcasing projects, skills, and experience in modern web development and Backend Developer." />
+  <meta name="author" content="Ahmed Nabil" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="shortcut icon" href="/logo.png" />
+
+  <meta property="og:title" content="Ahmed Nabil - Backend Developer" />
+  <meta property="og:description"
+    content="Professional portfolio showcasing projects, skills, and experience in Backend Development." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ahmed Nabil - Backend Developer" />
+  <meta name="twitter:description" content="Backend Developer - Professional Portfolio" />
+  <meta name="twitter:image" content="/logo.png" />
+</head>
+
+<body>
+  <!-- Initial loading screen (removed after React hydrates) -->
+  <div id="initial-loader" style="
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: hsl(240 10% 3.9%);
+    ">
+    <!-- Subtle radial glow -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center, hsla(271, 81%, 56%, 0.08) 0%, transparent 70%);
+      "></div>
+
+    <!-- Main loader -->
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 48px;">
+      <!-- Spinner container -->
+      <div style="position: relative; width: 112px; height: 112px;">
+        <!-- Conic gradient spinner -->
+        <div style="
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent, hsl(271 81% 56%), hsl(189 85% 57%), transparent);
+            mask: radial-gradient(farthest-side, transparent calc(100% - 3px), white calc(100% - 3px));
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), white calc(100% - 3px));
+            animation: spin 2s linear infinite;
+          "></div>
+
+        <!-- Inner pulsing ring -->
+        <div style="
+            position: absolute;
+            inset: 16px;
+            border-radius: 50%;
+            border: 1px solid hsla(271, 81%, 56%, 0.3);
+            animation: pulse-ring 2s ease-in-out infinite;
+          "></div>
+
+        <!-- Center logo box -->
+        <div style="
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <div style="
+              width: 56px;
+              height: 56px;
+              border-radius: 12px;
+              background: linear-gradient(135deg, hsl(271 81% 56%) 0%, hsl(189 85% 57%) 100%);
+              padding: 1.5px;
+              box-shadow: 0 0 30px hsla(271, 81%, 56%, 0.4);
+              animation: glow-pulse 2s ease-in-out infinite;
+            ">
+            <div style="
+                width: 100%;
+                height: 100%;
+                border-radius: 11px;
+                background: hsl(240 10% 3.9%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              ">
+              <span style="
+                  font-size: 24px;
+                  font-weight: 900;
+                  font-family: system-ui, sans-serif;
+                  background: linear-gradient(135deg, hsl(271 81% 56%) 0%, hsl(189 85% 57%) 100%);
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                ">A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading dots -->
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <div class="loading-dot" style="animation-delay: 0s;"></div>
+        <div class="loading-dot" style="animation-delay: 0.15s;"></div>
+        <div class="loading-dot" style="animation-delay: 0.3s;"></div>
+        <div class="loading-dot" style="animation-delay: 0.45s;"></div>
+        <div class="loading-dot" style="animation-delay: 0.6s;"></div>
+      </div>
+    </div>
+
+    <!-- Corner accents -->
+    <div
+      style="position: absolute; top: 32px; left: 32px; width: 64px; height: 64px; border-left: 2px solid hsla(271, 81%, 56%, 0.2); border-top: 2px solid hsla(271, 81%, 56%, 0.2); border-top-left-radius: 8px;">
+    </div>
+    <div
+      style="position: absolute; top: 32px; right: 32px; width: 64px; height: 64px; border-right: 2px solid hsla(271, 81%, 56%, 0.2); border-top: 2px solid hsla(271, 81%, 56%, 0.2); border-top-right-radius: 8px;">
+    </div>
+    <div
+      style="position: absolute; bottom: 32px; left: 32px; width: 64px; height: 64px; border-left: 2px solid hsla(271, 81%, 56%, 0.2); border-bottom: 2px solid hsla(271, 81%, 56%, 0.2); border-bottom-left-radius: 8px;">
+    </div>
+    <div
+      style="position: absolute; bottom: 32px; right: 32px; width: 64px; height: 64px; border-right: 2px solid hsla(271, 81%, 56%, 0.2); border-bottom: 2px solid hsla(271, 81%, 56%, 0.2); border-bottom-right-radius: 8px;">
+    </div>
+
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulse-ring {
+
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 0.6;
+        }
+      }
+
+      @keyframes glow-pulse {
+
+        0%,
+        100% {
+          box-shadow: 0 0 20px hsla(271, 81%, 56%, 0.3);
+        }
+
+        50% {
+          box-shadow: 0 0 40px hsla(271, 81%, 56%, 0.5);
+        }
+      }
+
+      .loading-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: hsl(271 81% 56%);
+        animation: dot-pulse 1.2s ease-in-out infinite;
+      }
+
+      @keyframes dot-pulse {
+
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: scale(0.8);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </div>
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
