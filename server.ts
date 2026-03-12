@@ -31,9 +31,17 @@ export function createApiServer() {
     });
 
     // --- MongoDB Config ---
-    mongoose.connect(process.env.MONGO_URI as string)
-        .then(() => console.log('MongoDB connected for local dev'))
-        .catch(err => console.error('MongoDB connection error:', err));
+    let isConnected = false;
+    const connectDB = async () => {
+        if (isConnected || !process.env.MONGO_URI) return;
+        try {
+            await mongoose.connect(process.env.MONGO_URI);
+            isConnected = true;
+            console.log('MongoDB connected');
+        } catch (err) {
+            console.error('MongoDB connection error:', err);
+        }
+    };
 
     // --- Schemas & Models ---
     const ProjectSchema = new mongoose.Schema({
@@ -180,7 +188,10 @@ export function createApiServer() {
     const ContactMessage = mongoose.models.ContactMessage || mongoose.model('ContactMessage', ContactMessageSchema);
 
     // --- Seed Logic ---
-    const seedDefaultHero = async () => {
+    let isSeeding = false;
+    const seedDatabase = async () => {
+        if (isSeeding) return;
+        isSeeding = true;
         try {
             const existingHero = await Hero.findOne();
             if (!existingHero) {
@@ -194,14 +205,7 @@ export function createApiServer() {
                 });
                 console.log('✅ Created default Hero data');
             }
-        } catch (error) {
-            console.error('Error seeding Hero data:', error);
-        }
-    };
-    seedDefaultHero();
 
-    const seedDefaultCategories = async () => {
-        try {
             const defaultCategories = [
                 { name: 'Frontend', type: 'skill', description: 'Frontend technologies', color: '#3b82f6', icon: 'Monitor' },
                 { name: 'Backend', type: 'skill', description: 'Backend technologies', color: '#10b981', icon: 'Server' },
@@ -213,10 +217,16 @@ export function createApiServer() {
                 if (!existing) await Category.create(cat);
             }
         } catch (error) {
-            console.error('Error seeding categories:', error);
+            console.error('Error seeding data:', error);
         }
     };
-    seedDefaultCategories();
+
+    // DB Initialization Middleware
+    app.use(async (req, res, next) => {
+        await connectDB();
+        await seedDatabase();
+        next();
+    });
 
     // --- API Routes ---
 
